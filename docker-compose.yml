@@ -1,0 +1,16 @@
+services:
+  db:
+    container_name: fastapi_todo_db
+    env_file: .env
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: fastapi_todo_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "6001:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
