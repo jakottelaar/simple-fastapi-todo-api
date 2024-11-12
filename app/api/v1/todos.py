@@ -7,7 +7,7 @@ from app.core.database import get_db
 
 router = APIRouter(prefix="/todos", tags=["todos"])
 
-@router.post("/", response_model=schemas.Todo)
+@router.post("/", response_model=schemas.Todo, status_code=201)
 def create_todo(todo: schemas.TodoCreate, db: Session = Depends(get_db)):
     return crud.create_todo(db=db, todo=todo)
 
